@@ -515,3 +515,9 @@ body::-webkit-scrollbar-thumb {
     gap: 7px;
   }
 }
+
+@media(max-width: 655px){
+  .user{
+    justify-content: flex-start;
+  }
+}
