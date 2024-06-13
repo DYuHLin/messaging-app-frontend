@@ -476,10 +476,9 @@ a{
   display: none;
 }
 
-/* .message-form{
-  display: flex;
-  gap: 10px;
-} */
+.guest{
+  margin-top: 10px;
+}
 
 body::-webkit-scrollbar {
   width: 6px;

@@ -34,6 +34,26 @@ function Login() {
     };
   };
 
+  const guestLogin = async () => {
+    try{
+      const res = await axios.post(`${import.meta.env.VITE_URI}/login`, {email: 'guest@gmail.com', password: 'guest123'}, {headers: { "Content-Type": "application/json" }});
+      if(res.data === "email"){
+        setError("This email does not exist.");
+        toast.error("There was an error");
+      } else if(res.data === "password"){
+        setError("Your password is incorrect");
+        toast.error("There was an error");
+      } else {
+        setUser(res.data);
+        navigate('/');
+        toast.success("You have logged in successfully");
+      };
+      
+    }catch(err){
+      console.log(err);
+    };
+  };
+
   return (
     <section>
       <h1 className='register-title'>Login</h1>
@@ -44,6 +64,7 @@ function Login() {
         </form>
         <p className="error">{error}</p>
       <Link to='/register'>Register</Link>
+      <p className='guest' onClick={guestLogin}>Sign in as guest</p>
     </section>
   )
 }
